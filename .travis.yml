@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t telstratxynidakis/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true telstratxynidakis/docker-react npm run test -- --coverage
